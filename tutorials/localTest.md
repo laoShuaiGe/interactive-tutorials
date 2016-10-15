@@ -1,22 +1,18 @@
-Tutorial
---------
-Here you may write text that explains a certain feature.
+# import the Flask class from the flask module
+from flask import Flask, render_template
 
-Exercise
---------
-Here you will need to write the purpose of the exercise. Finishing the exercise correctly
-must be accomplished using the new feature that you are explaning.
+# create the application object
+app = Flask(__name__)
 
-Tutorial Code
--------------
-Write a code block that will appear on the interpreter window. For example, you may
-write an empty function, which the user must complete in order to finish the exercise.
+# use decorators to link the function to a url
+@app.route('/')
+def home():
+    return "Hello, World!"  # return a string
 
-Expected Output
----------------
-Write a code block that will describe the exact output expected from the modified code,
-if it has been modified correctly.
+@app.route('/welcome')
+def welcome():
+    return render_template('welcome.html')  # render a template
 
-Solution
---------
-Write the solution code to the problem.
+# start the server with the 'run()' method
+if __name__ == '__main__':
+    app.run(debug=True)
